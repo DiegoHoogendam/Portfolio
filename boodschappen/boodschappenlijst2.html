@@ -1,0 +1,94 @@
+<html>
+  <head>
+    
+     <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="font/css/fontello.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  <style>
+  
+     .center {
+      width: 15%;
+      margin-left: 42.5%;
+   }
+   
+  </style>
+    
+    <script>
+    
+    let boodschappen = [];
+    
+    function ophalen() {
+      
+      let myJSONBoodschappen = localStorage.getItem("boodschappen");
+        
+        boodschappen = JSON.parse(myJSONBoodschappen);
+        
+        let htmltekst = "";
+        
+        for (i=0;i<boodschappen.length;i++)
+        {
+          htmltekst += boodschappen[i] + "<input type=checkbox onclick='update(" + i + ")'> <br>";
+        }
+        
+        document.getElementById("tekst").innerHTML = htmltekst;
+        
+    }
+    
+     function wissen() {
+          
+          console.log("wis")
+          
+          document.getElementById("tekst").innerHTML = "";
+          
+          localStorage.clear();
+          
+        }
+    
+    function update(index) {
+        boodschappen.splice(index, 1);
+        
+        let myJSONBoodschappen = JSON.stringify(boodschappen);
+        
+        localStorage.setItem("boodschappen", myJSONBoodschappen);
+        
+        let htmltekst = "";
+        
+        for (i=0;i<boodschappen.length;i++)
+        {
+          htmltekst += boodschappen[i] + "<input type=checkbox onclick='update(" + i + ")'> <br>";
+        }
+        
+        document.getElementById("tekst").innerHTML = htmltekst;
+      }
+        
+    </script>
+  </head>
+  <body>
+    
+    <h1 style="margin-left: 37%;">Boodschappen Ophalen</h1>
+    <label style="margin-left: 42.5%;">Klik hier om uw boodschappen op te halen:</label>
+    <button onclick="ophalen()" class="center">OPHALEN</button>
+    
+    <br><br>
+    
+    <label style="margin-left: 42.5%;">Klik hier om uw boodschappen te wissen:</label>
+    <button onclick="wissen()" class="center">WISSEN</button>
+    
+    <br><br>
+    
+    <label style="margin-left: 42.5%;">Klik hier om terug te gaan:</label>
+    <form action="boodschappenlijst.html">
+    <input type="submit" value="TERUG" style="margin-left: 42.5%; width: 15%;">
+    </form>
+    
+    <div style="margin-left: 42.5%; width: 15%;">Boodschappen:</div><br>
+    <div id="tekst" style="margin-left: 42.5%; width: 15%;"></div>
+    
+    
+    
+  </body>
+</html>

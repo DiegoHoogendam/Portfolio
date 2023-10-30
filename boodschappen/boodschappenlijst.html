@@ -1,0 +1,108 @@
+
+<html>
+  <head>
+    
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="font/css/fontello.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+
+<style>
+  
+  .center {
+    width: 15%;
+    margin-left: 42.5%;
+  }
+  
+</style>
+
+    <script>
+    
+    document.addEventListener("keyup", function(event) {
+      if (event.key === "Enter") {
+        toevoegen();
+      }
+    });
+    
+    
+    let boodschappen = [];
+      
+      function toevoegen(){
+        
+        boodschappen.push(document.getElementById("input").value)
+        
+        document.getElementById("input").value = null;
+        
+        let myJSONBoodschappen = JSON.stringify(boodschappen);
+        
+        localStorage.setItem("boodschappen", myJSONBoodschappen);
+        
+        ophalen();
+        
+      }
+        
+        function ophalen(){
+        
+        let myJSONBoodschappen = localStorage.getItem("boodschappen");
+        
+        boodschappen = JSON.parse(myJSONBoodschappen);
+    
+
+        let htmltekst = "";
+        
+        for (i=0;i<boodschappen.length;i++)
+        {
+          htmltekst += boodschappen[i] + "<br>";
+        }
+        
+        document.getElementById("tekst").innerHTML = htmltekst;
+    
+      }
+      
+      function update(index) {
+        boodschappen.splice(index, 1);
+        
+        let myJSONBoodschappen = JSON.stringify("boodschappen");
+        
+        localStorage.setItem("boodschappen", myJSONBoodschappen);
+        
+        let htmltekst = "";
+        
+        for (i=0;i<boodschappen.length;i++)
+        {
+          htmltekst += boodschappen[i] + "<input type=checkbox onclick='update(" + i + ")'> <br>";
+        }
+        
+        document.getElementById("tekst").innerHTML = htmltekst;
+      }
+      
+    </script>
+ 
+    
+  </head>
+  
+  <body>
+    
+    
+    <h1 style="margin-left: 36%;">Boodschappen Toevoegen</h1>
+    <label style="margin-left: 42.5%;">Boodschap:</label><input id="input" class="center" autofocus>
+    
+    <br><br>
+    
+    <label style="margin-left: 42.5%;">Voeg boodschap toe:</label>
+    <button onclick="toevoegen()" class="center" >TOEVOEGEN</button>
+    
+    <br><br>
+    
+    <label style="margin-left: 42.5%;">Bekijk uw boodschappen:</label>
+    <form action="boodschappenlijst2.html">
+    <input type="submit" value="BOODSCHAPPENLIJST" style="margin-left: 42.5%; width: 15%;">
+    </form>
+    
+    <div id="tekst" class="center"></div>
+    
+  </body>
+  
+</html>
