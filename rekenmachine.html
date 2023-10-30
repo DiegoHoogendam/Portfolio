@@ -1,0 +1,118 @@
+<html>
+  <head>
+    <style>
+      input {
+        background-color: #ffffff;
+        border-style: double;
+        border-color: white;
+        margin-left: 42.5%;
+      }
+      button {
+        background-color: #ffffff;
+        border-style: double;
+        border-color: white;
+        margin-left: 42.5%;
+      }
+      select {
+        background-color: #ffffff;
+        border-style: double;
+        border-color: white;
+        border-width: 2px;
+        margin-left: 0%;
+      }
+      div {
+        color: white;
+        margin-left: 42.5%;
+        font-family: "Lucida Console", "Courier New", monospace;
+      }
+      h1 {
+        font-family: "Lucida Console", "Courier New", monospace;
+        margin-top: 10px;
+        margin-left: 40.7%;
+        color: white;
+      }
+      body {
+        background-color: black;
+      }
+    </style>
+    
+    <h1>REKENMACHINE</h1>
+    
+  <script>
+  
+  function bereken() {
+    
+    let getal1 = document.getElementById("invoerEen").value;
+    let getal2 = document.getElementById("invoerTwee").value;
+    getal1 = parseFloat(getal1);
+    getal2 = parseFloat(getal2);
+    
+    if (document.getElementById("drop").value == "plus") {
+      res = optellen(getal1,getal2);
+      document.getElementById("antwoord").innerHTML = res;
+    }
+    
+    if (document.getElementById("drop").value == "min") {
+      res = aftrekken(getal1,getal2);
+      document.getElementById("antwoord").innerHTML = res;
+    }
+    
+    if (document.getElementById("drop").value == "keer") {
+      res = vermedigvuldigen(getal1,getal2);
+      document.getElementById("antwoord").innerHTML = res;
+    }
+    
+    if (document.getElementById("drop").value == "gedeelddoor") {
+      res = delen(getal1,getal2);
+      document.getElementById("antwoord").innerHTML = res;
+    }
+    
+  }
+  
+  function optellen(g1, g2) {
+    let totaal = g1 + g2;
+    
+    return totaal;
+  }
+  
+  function aftrekken(g1, g2) {
+    let totaal = g1 - g2;
+    
+    return totaal;
+  }
+  
+  function vermedigvuldigen(g1, g2) {
+    let totaal = g1 * g2;
+    
+    return totaal;
+  }
+  
+  function delen(g1, g2) {
+    let totaal = g1 / g2;
+    
+    return totaal;
+  }
+  
+  </script>
+  
+    <input id="invoerEen" type="number"><br><br>
+    <input id="invoerTwee" type="number"><br><br>
+    
+    <button onclick="bereken()">Bereken</button>
+    
+    <select id="drop">
+      <option value="plus">+</option>
+      <option value="min">-</option>
+      <option value="keer">x</option>
+      <option value="gedeelddoor">/</option>
+    </select> <br><br>
+    
+    <div id="antwoord"></div>
+  
+  </head>
+  
+  <body>
+    
+  </body>
+  
+</html>

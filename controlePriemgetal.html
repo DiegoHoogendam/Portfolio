@@ -1,0 +1,98 @@
+<html>
+  <head>
+ 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="font/css/fontello.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    
+    <style>
+      
+      input {
+        margin-left: 10%;
+        margin-top: 10%;
+      }
+      
+      button {
+        margin-left: 45%;
+      }
+      
+      .resultaatTekst {
+        margin-top: 3%;
+        margin-left: 44.5%;
+      }
+      
+    </style>
+    
+    <script>
+    
+      function controle() {
+        
+        
+        let getal = document.getElementById("input").value;
+          getal = parseInt(getal);
+          
+        if(getal < 1001) {
+          
+        
+          let isPriemgetal = true;
+          
+          let antwoord;
+        
+          for (i=2;i<getal;i++) {
+        
+            antwoord = getal % i;
+          
+              if (antwoord == 0){
+                isPriemgetal = false;
+                break;
+              }
+          }
+        
+          if (isPriemgetal == true) {
+            console.log("Priemgetal")
+            document.getElementById("resultaat").innerHTML = "Dit getal is een priemgetal";
+          }
+        
+          else if (isPriemgetal == false) {
+            console.log("Geen priemgetal")
+            document.getElementById("resultaat").innerHTML = "Dit getal is geen priemgetal";
+          }
+        }
+        
+        else if(getal > 1000) {
+          console.log ("getal is te groot");
+          document.getElementById("resultaat").innerHTML = "";
+          alert("Het getal " + getal + " is te groot. Voer een waarde t/m 1000 in.")
+        }
+      }
+      
+    </script>
+    
+  </head>
+  
+  <body>
+    
+    <div class="navbar">
+  <div class="navbar-inner">
+    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="index.html"><img src="img/profiel.png" alt="Profiel" style="width: 64px;"></a>
+      <ul class="nav nav-collapse pull-right">
+        <li><a href="index.html" class="active"><i class="icon-user"></i> PROFIEL</a></li>
+        <li><a href="skills.html"><i class="icon-trophy"></i> VAARDIGHEDEN</a></li>
+      </ul>
+      <div class="nav-collapse collapse"></div>
+    </div>
+  </div>
+</div>
+
+    <input type="number" id="input"><br><br>
+    
+    <button type="button" onclick="controle()"><b>Controle Priemgetal</b></button>
+    
+    <div id="resultaat" class="resultaatTekst"></div>
+    
+  </body>
+  
+</html>

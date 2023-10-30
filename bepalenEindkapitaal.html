@@ -1,0 +1,112 @@
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="font/css/fontello.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    
+    <script>
+    
+      function bereken() {
+      
+      var startKapitaal = document.getElementById("start").value;
+      parseFloat(startKapitaal);
+      console.log("Startkapitaal is " + startKapitaal);
+      
+      var rentePercentage = document.getElementById("rente").value;
+      parseFloat(rentePercentage);
+      console.log("Rentepercentage is " + rentePercentage);
+      
+      var rentePeriode = document.getElementById("periode").value;
+      parseFloat(rentePeriode);
+      console.log("Renteperiode is  " + rentePeriode);
+      
+      var eindKapitaal;
+      
+      var kapitaal = startKapitaal;
+      
+        rentePercentage = rentePercentage / 100;
+        rentePercentage = rentePercentage + 1;
+        
+        console.log(rentePercentage);
+      
+        for (let i = 0; i < rentePeriode; i++){
+        
+          kapitaal = kapitaal * rentePercentage;
+          
+          console.log(kapitaal);
+          
+          if ( i == rentePeriode - 1) {
+            console.log("BREAK")
+            eindKapitaal = kapitaal;
+            console.log(eindKapitaal);
+            
+          }
+          
+          }
+          
+          if (document.getElementById("select").value == "Nederland") {
+            console.log("Nederland");
+            
+            var opmaak = { style: "currency",currency: "EUR"};
+            document.getElementById("noteer").innerHTML = "Het eindkapitaal na " + rentePeriode + " jaar, is " + eindKapitaal.toLocaleString("nl-NL", opmaak);
+            
+          }
+          
+          if (document.getElementById("select").value == "Finland") {
+            console.log("Finland");
+            
+            var opmaak = { style: "currency",currency: "EUR"};
+            document.getElementById("noteer").innerHTML = "Het eindkapitaal na " + rentePeriode + " jaar, is " + eindKapitaal.toLocaleString("fi-FI", opmaak);
+          }
+          
+          if (document.getElementById("select").value == "Amerika") {
+            console.log("Amerika");
+            
+            var opmaak = { style: "currency",currency: "USD"};
+            document.getElementById("noteer").innerHTML = "Het eindkapitaal na " + rentePeriode + " jaar, is " + eindKapitaal.toLocaleString("en-US", opmaak);
+          }
+          
+          if (document.getElementById("select").value == "Engeland") {
+            console.log("Engeland");
+            
+            var opmaak = { style: "currency",currency: "GBP"};
+            document.getElementById("noteer").innerHTML = "Het eindkapitaal na " + rentePeriode + " jaar, is " + eindKapitaal.toLocaleString("en-GB", opmaak);
+          }
+          
+        }
+      
+    </script>
+  </head>
+  
+  <body>
+    
+     Kies een decimale scheiding: <br><br>
+    <select name="Land" id="select">
+      <option value="Nederland">Nederland</option>
+      <option value="Finland">Finland</option>
+      <option value="Amerika">Amerika</option>
+      <option value="Engeland">Engeland</option>
+    </select>
+    
+    <br><br>
+    
+    Startkapitaal: <br>
+    <input type="number" id="start"><br><br>
+    
+    Rente Percentage: <br>
+    <input type="number" id="rente"><br><br>
+    
+    Rente Periode: <br>
+    <input type="number" id="periode"><br><br>
+    
+    <button onclick="bereken()">Bereken het eindkapitaal</button>
+    
+    <p id="noteer">Hier komt het eindkapitaal.</p>
+    
+  </body>
+  
+</html>

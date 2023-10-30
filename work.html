@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Mini Portfolio | Werk</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="font/css/fontello.css" rel="stylesheet">
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/jquery.fancybox.css" media="screen">
+</head>
+<body>
+<div class="navbar">
+  <div class="navbar-inner">
+    <div class="container"> <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> <a class="brand" href="index.html"><img src="img/profiel.png" alt="Profie" style="width: 64px;"></a>
+      <ul class="nav nav-collapse pull-right">
+        <li><a href="skills.html"> Terug</a></li>
+      </ul>
+      <div class="nav-collapse collapse"></div>
+    </div>
+  </div>
+</div>
+<div class="container work">
+  <h2>Mijn Werk</h2>
+  <a href="opdracht1.html" target="opdracht1">Opdracht 1</a>
+  <br>
+  <a href="rekenmachine.html" target="rekenmachine">Opdracht 2 (Rekenmachine)</a>
+  <br>
+  <a href="controlePriemgetal.html">Opdracht 3 (Controle Priemgetal)</a>
+  <br>
+  <a href="bepalenEindkapitaal.html">Opdracht 4 (Bepalen Eindkapitaal)</a>
+  <br>
+  <a href="boodschappen/boodschappenlijst.html">Opdracht 5 (Boodschappenlijst)</a>
+</div>
+
+<script src="js/jquery-1.10.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script>
+$('#myModal').modal('hidden')
+</script>
+<script src="js/jquery.fancybox.js?v=2.1.5"></script>
+<script>
+$(document).ready(function () {
+    $(".fancybox-thumb").fancybox({
+        helpers: {
+            title: {
+                type: 'inside'
+            },
+            overlay: {
+                css: {
+                    'background': 'rgba(1,1,1,0.65)'
+                }
+            }
+        }
+    });
+});
+</script>
+</body>
+</html>
